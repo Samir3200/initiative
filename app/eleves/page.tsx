@@ -3,6 +3,7 @@ import { eleves, villes, examens } from "../db/schema";
 import { eq, desc, ilike, or } from "drizzle-orm";
 import Search from "./search";
 import Link from "next/link";
+import DashboardButton from "../inscriptions/Components/DashboardButton";
 
 export default async function ListeElevesPage({
     searchParams,
@@ -35,6 +36,7 @@ export default async function ListeElevesPage({
 
     return (
         <div className="p-8 max-w-6xl mx-auto min-h-screen bg-slate-50/30">
+            <DashboardButton />
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
                 <div>
                     <h1 className="text-3xl font-bold text-slate-900">Effectifs</h1>

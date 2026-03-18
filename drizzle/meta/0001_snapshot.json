@@ -1,0 +1,255 @@
+{
+  "id": "3a3031f4-a957-4ae3-9dc5-98d2e16796d2",
+  "prevId": "9d09f7c4-fbe4-4cd5-b81e-113725262212",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.eleves": {
+      "name": "eleves",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "nom": {
+          "name": "nom",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "prenom": {
+          "name": "prenom",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "date_naissance": {
+          "name": "date_naissance",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "adresse": {
+          "name": "adresse",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "telephone_eleve": {
+          "name": "telephone_eleve",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email_eleve": {
+          "name": "email_eleve",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "niveau": {
+          "name": "niveau",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "classe": {
+          "name": "classe",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "etablissement": {
+          "name": "etablissement",
+          "type": "varchar(150)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "prof_principal": {
+          "name": "prof_principal",
+          "type": "varchar(150)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "code_ent": {
+          "name": "code_ent",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ville_id": {
+          "name": "ville_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "nom_parent": {
+          "name": "nom_parent",
+          "type": "varchar(150)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "telephone_parent": {
+          "name": "telephone_parent",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email_parent": {
+          "name": "email_parent",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "diplome": {
+          "name": "diplome",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "eleves_ville_id_villes_id_fk": {
+          "name": "eleves_ville_id_villes_id_fk",
+          "tableFrom": "eleves",
+          "tableTo": "villes",
+          "columnsFrom": [
+            "ville_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "eleves_email_parent_unique": {
+          "name": "eleves_email_parent_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email_parent"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.examens": {
+      "name": "examens",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "eleve_id": {
+          "name": "eleve_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "date_examen": {
+          "name": "date_examen",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "diplome": {
+          "name": "diplome",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "examens_eleve_id_eleves_id_fk": {
+          "name": "examens_eleve_id_eleves_id_fk",
+          "tableFrom": "examens",
+          "tableTo": "eleves",
+          "columnsFrom": [
+            "eleve_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "examens_eleve_id_unique": {
+          "name": "examens_eleve_id_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "eleve_id"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.villes": {
+      "name": "villes",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "nom": {
+          "name": "nom",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "villes_nom_unique": {
+          "name": "villes_nom_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "nom"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

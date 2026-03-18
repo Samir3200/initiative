@@ -13,8 +13,8 @@ export const eleves = pgTable('eleves', {
     prenom: varchar('prenom', { length: 100 }).notNull(),
     dateNaissance: timestamp('date_naissance'),
     adresse: varchar('adresse', { length: 255 }),
-    telephoneEleve: varchar('telephone_eleve', { length: 50 }).unique().notNull(),
-    emailEleve: varchar('email_eleve', { length: 255 }).unique(),
+    telephoneEleve: varchar('telephone_eleve', { length: 50 }).notNull(),
+    emailEleve: varchar('email_eleve', { length: 255 }),
     niveau: varchar('niveau', { length: 50 }).notNull(), // Primaire, Collège, Lycée
     classe: varchar('classe', { length: 50 }).notNull(),
     etablissement: varchar('etablissement', { length: 150 }),
@@ -23,7 +23,7 @@ export const eleves = pgTable('eleves', {
     villeId: integer('ville_id').references(() => villes.id),
     nomParent: varchar('nom_parent', { length: 150 }).notNull(),
     telephoneParent: varchar('telephone_parent', { length: 20 }).notNull(),
-    emailParent: varchar('email_parent', { length: 255 }).unique(),
+    emailParent: varchar('email_parent', { length: 255 }),
     createdAt: timestamp('created_at').defaultNow(),
     diplome: varchar('diplome', { length: 100 }),
 });

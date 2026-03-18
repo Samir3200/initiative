@@ -1,8 +1,11 @@
-"use client";
 
+"use client";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { eleveSchema } from "../../lib/validations/eleve";
+// import { db } from "../../db";
+
 // L'appel se fait désormais via fetch vers l'API route
 
 interface InscriptionFormProps {
@@ -13,8 +16,10 @@ interface InscriptionFormProps {
 }
 
 import { useState } from "react";
+// import ListeElevesPage from "@/app/eleves/page";
 
 export default function InscriptionForm({ villes, defaultValues, isEditing, eleveId }: InscriptionFormProps) {
+	const router = useRouter();
 	const {
 		register,
 		handleSubmit,
@@ -58,12 +63,19 @@ export default function InscriptionForm({ villes, defaultValues, isEditing, elev
 	};
 
 	return (
-		<div>
-			{successMessage && (
-				<div className="mb-4 p-3 bg-green-100 text-green-700 rounded-lg text-sm font-semibold">
-					{successMessage}
-				</div>
-			)}
+		   <div>
+			   <button
+				   type="button"
+				   onClick={() => router.push("/eleves")}
+				   className="mb-4 p-2 bg-green-200 rounded-md hover:bg-green-300 transition cursor-pointer text-sm font-medium"
+			   >
+				   Liste des élèves
+			   </button>
+			   {successMessage && (
+				   <div className="mb-4 p-3 bg-green-100 text-green-700 rounded-lg text-sm font-semibold">
+					   {successMessage}
+				   </div>
+			   )}
 			{errorMessage && (
 				<div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm font-semibold">
 					{errorMessage}
@@ -77,6 +89,14 @@ export default function InscriptionForm({ villes, defaultValues, isEditing, elev
 					<h2 className="text-lg font-semibold text-blue-600 mb-1 flex items-center gap-2">
 						<span className="bg-blue-100 p-1 rounded">👤</span> Informations de l'élève
 					</h2>
+					<button
+						type="button"
+						onClick={() => reset()}
+						className="mb-2 p-2 bg-orange-200 rounded-md hover:bg-orange-300 transition cursor-pointer text-sm font-medium"
+					>
+						Réinitialiser
+					</button>
+
 					<div className="mb-2">
 						<div>
 						<div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-2">
@@ -210,5 +230,6 @@ export default function InscriptionForm({ villes, defaultValues, isEditing, elev
 			</div>
 		</form>
 		</div>
+	
 	);
 }

@@ -1,6 +1,9 @@
+
 import { db } from "../db";
 import { villes } from "../db/schema";
 import InscriptionForm from "./Components/InscriptionForm"; // Import relatif
+import DashboardButton from "./Components/DashboardButton";
+
 
 export default async function InscriptionPage() {
   try {
@@ -8,8 +11,14 @@ export default async function InscriptionPage() {
     
     return (
       <div className="p-8 max-w-4xl mx-auto">
+        <DashboardButton />
         <h1 className="text-2xl font-bold mb-6">Inscription d'un élève</h1>
-        <InscriptionForm villes={listeVilles} />
+        <InscriptionForm 
+          villes={listeVilles} 
+          defaultValues={{}} 
+          isEditing={false} 
+          eleveId={undefined} 
+        />
       </div>
     );
   } catch (error) {

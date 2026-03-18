@@ -1,0 +1,1 @@
+ALTER TABLE "eleves" DROP CONSTRAINT "eleves_email_eleve_unique";

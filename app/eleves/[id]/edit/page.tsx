@@ -1,8 +1,11 @@
+
 import { db } from "../../../db";
 import { eleves, villes, examens } from "../../../db/schema";
 import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import InscriptionForm from "../../../inscriptions/Components/InscriptionForm"; // Vérifie ton chemin
+
+import DashboardButton from "../../../inscriptions/Components/DashboardButton";
 
 export default async function EditElevePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -28,6 +31,7 @@ export default async function EditElevePage({ params }: { params: Promise<{ id: 
 
   return (
     <div className="p-8 max-w-4xl mx-auto">
+      <DashboardButton />
       <h1 className="text-2xl font-bold mb-6">Modifier la fiche de {initialData.prenom}</h1>
       <InscriptionForm 
         villes={toutesLesVilles} 

@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 
 export async function inscrireEleve(data: any) {
   try {
+    console.log('Données reçues pour inscription:', data);
     // 1. Insertion de l'élève
     const [nouvelEleve] = await db.insert(eleves).values({
       nom: data.nom,
@@ -37,7 +38,7 @@ export async function inscrireEleve(data: any) {
     revalidatePath("/inscriptions");
     return { success: true };
   } catch (error: any) {
-    console.error(error);
+    console.error('Erreur lors de l\'inscription:', error);
     if (error?.code === "23505" && error?.detail?.includes("telephone_eleve")) {
       return { success: false, message: "Ce numéro de téléphone est déjà utilisé." };
     }
