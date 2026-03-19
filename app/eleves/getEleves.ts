@@ -16,7 +16,7 @@ export async function getEleves(search?: string) {
         nom: eleves.nom,
         prenom: eleves.prenom,
         classe: eleves.classe,
-        diplome: examens.diplome,
+        diplome: eleves.diplome,
         codeEnt: eleves.codeEnt,
         villeNom: villes.nom,
     })
