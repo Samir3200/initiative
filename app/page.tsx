@@ -13,7 +13,17 @@ export default function Home() {
         >
           📝 Inscrire un nouvel élève
         </Link>
+        <Link 
+          href="/eleves" 
+          className="inline-block bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-all shadow-md active:scale-95 mt-4"
+        >
+          📋 Voir la liste des élèves
+        </Link>
       </div>
+      <div className="mt-10 text-sm text-slate-500">
+        <p>Développé par Samir ELORF</p>
+        <p>© 2026 Initiative Réussite. Tous droits réservés.</p>
+       </div>
     </div>
   );
 }

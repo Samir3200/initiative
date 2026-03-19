@@ -84,15 +84,17 @@ export default async function FicheElevePage({
               Coordonnées Élève
             </h2>
             <div className="space-y-4 text-slate-700">
-              <p className="flex justify-between"><strong>🎂 Né(e) le :</strong> <span>{info.dateNaissance ? new Date(info.dateNaissance).toLocaleDateString('fr-FR') : "N/A"}</span></p>
+              <p className="flex justify-between"><strong>🎂 Né(e) le :</strong> <span>{info.dateNaissance ? new Date(String(info.dateNaissance)).toLocaleDateString('fr-FR') : "N/A"}</span></p>
               <p className="flex justify-between"><strong>📱 Téléphone :</strong> <span className="font-mono">{info.telephoneEleve || "N/A"}</span></p>
-              <p className="flex flex-col"><strong>📧 Email :</strong> <span className="text-blue-600">{info.emailEleve || "N/A"}</span></p>
+              <p className="flex justify-between"><strong>📧 Email :</strong> <span className="text-blue-600">{info.emailEleve || "N/A"}</span></p>
               <p className="flex flex-col"><strong>🏠 Adresse :</strong> <span>{info.adresse}<br/>{ville?.nom}</span></p>
+               <p className="text-sm"><strong>📅 Inscrit depuis :</strong> {info.createdAt ? new Date(String(info.createdAt)).toLocaleDateString('fr-FR') : "N/A"}</p>
             </div>
             
             <div className="bg-slate-50 p-5 rounded-2xl border border-slate-100 space-y-3">
                <p className="text-sm"><strong>🔑 Code ENT :</strong> <code className="bg-white px-2 py-0.5 rounded border text-blue-700">{info.codeEnt || "N/A"}</code></p>
                <p className="text-sm"><strong>👨‍🏫 Prof Principal :</strong> {info.profPrincipal || "N/A"}</p>
+               <p className="text-sm"><strong>🏫 Établissement :</strong> {info.etablissement || "N/A"}</p>
             </div>
           </section>
 

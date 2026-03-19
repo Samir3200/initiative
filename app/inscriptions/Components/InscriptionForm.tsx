@@ -54,6 +54,9 @@ export default function InscriptionForm({ villes, defaultValues, isEditing, elev
 			if (result.success) {
 				setSuccessMessage(isEditing ? "✅ Élève modifié avec succès !" : "✅ Élève enregistré avec succès !");
 				reset();
+				if (isEditing) {
+					window.location.reload();
+				}
 			} else {
 				setErrorMessage("❌ Erreur : " + result.message);
 			}
@@ -140,7 +143,7 @@ export default function InscriptionForm({ villes, defaultValues, isEditing, elev
 					</div>
 					<div className="flex flex-col items-center justify-center mt-2 mb-2">
 						<label className="text-sm font-medium text-slate-700">Ville :</label>
-						<select {...register("villeId")} className="w-35 mt-1 p-1 border rounded-md outline-none focus:ring-2 focus:ring-blue-500">
+						<select {...register("villeId")} className="w-50 mt-1 p-1 border rounded-md outline-none focus:ring-2 focus:ring-blue-500">
 							<option value="">Choisir une ville...</option>
 							{villes.map((v) => (
 								<option key={v.id} value={v.id.toString()}>{v.nom}</option>

@@ -12,14 +12,14 @@ async function main() {
   console.log('Seed en cours...');
 
   const dataVilles = [
-    { nom: 'Meaux' },
-    { nom: 'Trilport' },
-    { nom: 'Villenoy' },
-    { nom: 'Cregy-les-Meaux' },
-    { nom: 'Coulommiers' },
-    { nom: 'St-Soupplets' },
-    { nom: 'La Ferté-sous-Jouarre' },
-    { nom: 'Sammeron' },
+    { nom: '77100 Meaux' },
+    { nom: '77470 Trilport' },
+    { nom: '77480 Villenoy' },
+    { nom: '77124 Cregy-les-Meaux' },
+    { nom: '77120 Coulommiers' },
+    { nom: '77165 St-Soupplets' },
+    { nom: '77460 La Ferté-sous-Jouarre' },
+    { nom: '77160 Sammeron' },
   ];
 
   try {
