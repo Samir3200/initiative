@@ -8,6 +8,15 @@ export default function ElevesTable({ liste }: { liste: any[] }) {
     }
     return (
         <div className="bg-white shadow-xl shadow-slate-200/50 rounded-2xl overflow-hidden border border-slate-100">
+            <div className="flex justify-end p-4">
+                <a
+                    href="/api/export-eleves"
+                    className="bg-green-600 text-white px-4 py-2 rounded-md font-bold hover:bg-green-700 transition-all text-xs"
+                    download
+                >
+                    Exporter Excel
+                </a>
+            </div>
             <table className="w-full text-left">
                 <thead className="bg-slate-50/80 border-b border-slate-100 text-slate-500 text-xs uppercase tracking-wider">
                     <tr>

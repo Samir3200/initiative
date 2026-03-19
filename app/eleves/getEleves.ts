@@ -1,5 +1,5 @@
 import { db } from "../db";
-import { eleves, villes } from "../db/schema";
+import { eleves, villes,examens } from "../db/schema";
 import { desc, eq, or, ilike } from "drizzle-orm";
 
 export async function getEleves(search?: string) {
@@ -16,13 +16,14 @@ export async function getEleves(search?: string) {
         nom: eleves.nom,
         prenom: eleves.prenom,
         classe: eleves.classe,
-        diplome: eleves.diplome,
+        diplome: examens.diplome,
         codeEnt: eleves.codeEnt,
         villeNom: villes.nom,
     })
     .from(eleves)
     .where(whereClause)
     .leftJoin(villes, eq(eleves.villeId, villes.id))
+    .leftJoin(examens, eq(examens.eleveId, eleves.id))
     .orderBy(desc(eleves.id));
     return await query;
 }
